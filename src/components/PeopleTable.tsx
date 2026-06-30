@@ -14,6 +14,7 @@ export const PeopleTable = () => {
   const { people } = useOutletContext<{ people: Person[] }>();
   const { slug, search } = useProjectParams();
   const columnNames = ['Name', 'Sex', 'Born', 'Died', 'Mother', 'Father'];
+  const isSortingDescending = search.order === 'desc';
 
   let filteredPeople = [...people];
 
@@ -57,7 +58,7 @@ export const PeopleTable = () => {
 
                 const searchParam =
                   search.sort === normalizedColumnName
-                    ? search.order === 'desc'
+                    ? isSortingDescending
                       ? { sort: null, order: null }
                       : { sort: normalizedColumnName, order: 'desc' }
                     : { sort: normalizedColumnName, order: null };
