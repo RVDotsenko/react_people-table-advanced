@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { SearchLink } from './SearchLink';
 import cn from 'classnames';
 import { useProjectParams } from '../utils/useProjectParams';
@@ -20,6 +19,12 @@ export const PeopleFilters = () => {
   useEffect(() => {
     setInputValue(search.query || '');
   }, [search.query]);
+
+  const resetFiltersPayload = {
+    query: null,
+    sex: null,
+    centuries: null,
+  };
 
   return (
     <nav className="panel">
@@ -101,9 +106,13 @@ export const PeopleFilters = () => {
       </div>
 
       <div className="panel-block">
-        <Link className="button is-link is-outlined is-fullwidth" to="/people">
+        <SearchLink
+          params={resetFiltersPayload}
+          className="button is-link is-outlined is-fullwidth"
+          // to="/people"
+        >
           Reset all filters
-        </Link>
+        </SearchLink>
       </div>
     </nav>
   );

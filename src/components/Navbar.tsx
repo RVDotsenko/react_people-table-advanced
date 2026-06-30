@@ -1,8 +1,11 @@
 import { NavLink } from 'react-router-dom';
 
 import cn from 'classnames';
+import { useProjectParams } from '../utils/useProjectParams';
 
 export const Navbar = () => {
+  const { searchParams } = useProjectParams();
+
   return (
     <nav
       data-cy="nav"
@@ -26,7 +29,7 @@ export const Navbar = () => {
             className={({ isActive }) =>
               cn('navbar-item', { 'has-background-grey-lighter': isActive })
             }
-            to="/people"
+            to={{ pathname: '/people', search: searchParams.toString() }}
           >
             People
           </NavLink>

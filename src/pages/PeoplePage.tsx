@@ -56,7 +56,8 @@ export const PeoplePage = () => {
         ) : (
           <div className="columns is-desktop is-flex-direction-row-reverse">
             <div className="column is-7-tablet is-narrow-desktop">
-              {isLoading ? <Loader /> : <PeopleFilters />}
+              {isLoading && <Loader />}
+              {!errors.loading && !errors.people && <PeopleFilters />}
             </div>
 
             <div className="column">

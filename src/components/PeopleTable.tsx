@@ -66,15 +66,17 @@ export const PeopleTable = () => {
                   <th key={columnName}>
                     <span className="is-flex is-flex-wrap-nowrap">
                       {columnName}
-                      <SearchLink params={searchParam}>
-                        {
-                          <SortIcon
-                            columnName={columnName}
-                            currentSort={search.sort}
-                            currentOrder={search.order}
-                          />
-                        }
-                      </SearchLink>
+                      {columnName !== 'Mother' && columnName !== 'Father' && (
+                        <SearchLink params={searchParam}>
+                          {
+                            <SortIcon
+                              columnName={columnName}
+                              currentSort={search.sort}
+                              currentOrder={search.order}
+                            />
+                          }
+                        </SearchLink>
+                      )}
                     </span>
                   </th>
                 );
